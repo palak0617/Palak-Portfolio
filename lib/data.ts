@@ -6,9 +6,9 @@ export const PORTFOLIO_DATA = {
   github: 'https://github.com/palak0617',
   linkedin: 'https://linkedin.com/in/palak-singla6',
 
-  intro: `A Computer Science student at Chitkara University who 
+  intro: `A Computer Science student who 
 builds things at the intersection of technology and artistry — from 
-blockchain platforms and AI wellness apps to handmade jewellery brands. 
+building events website and AI wellness apps to handmade jewellery brands. 
 I've launched products, led teams, spoken in international rooms, and 
 I'm still just getting started.`,
 
