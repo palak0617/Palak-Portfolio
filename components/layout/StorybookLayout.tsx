@@ -101,46 +101,84 @@ export default function StorybookLayout({ onSwitchToScroll }: Props) {
       <LEDLights />
 
       {/* ── NAV ── */}
-      <header className="nav-header relative z-30 flex items-center justify-between px-5 pt-3 pb-2">
-        <span className="nav-wordmark">Palak's Portfolio</span>
+      <header className="nav-header relative z-30 flex items-center justify-between px-4 pt-3 pb-2 gap-2">
+  
+  {/* Wordmark — hidden on very small screens */}
+  <span className="nav-wordmark hidden sm:block flex-shrink-0">
+    Palak's Portfolio
+  </span>
 
-        <nav className="flex gap-0.5 flex-wrap justify-center">
-          {CHAPTERS.map(ch=>{
-            const isActive=cur===ch.id;
-            return(
-              <button key={ch.id} onClick={()=>nav(ch.id)} aria-current={isActive?'page':undefined}
-                className={`nav-tab${isActive?' active':''}`} style={{position:'relative'}}>
-                {ch.label}
-                {isBookmarked(ch.id)&&(
-                  <span style={{position:'absolute',top:'3px',right:'5px',width:'5px',height:'5px',borderRadius:'50%',background:'var(--lavender)'}}/>
-                )}
-              </button>
-            );
-          })}
-        </nav>
+  {/* Chapter tabs — scrollable on mobile */}
+  <nav
+    className="flex gap-0.5 overflow-x-auto no-scrollbar"
+    style={{ flex: 1 }}
+    aria-label="Chapter navigation"
+  >
+    {CHAPTERS.map(ch => {
+      const isActive = cur === ch.id;
+      return (
+        <button
+          key={ch.id}
+          onClick={() => nav(ch.id)}
+          aria-current={isActive ? 'page' : undefined}
+          className={`nav-tab flex-shrink-0${isActive ? ' active' : ''}`}
+          style={{ position: 'relative' }}
+        >
+          {ch.label}
+          {isBookmarked(ch.id) && (
+            <span style={{
+              position: 'absolute', top: '3px', right: '5px',
+              width: '5px', height: '5px', borderRadius: '50%',
+              background: 'var(--lavender)',
+            }}/>
+          )}
+        </button>
+      );
+    })}
+  </nav>
 
-        <div className="flex items-center gap-2">
-          {/* Bookmarks */}
-          <motion.button className="nav-icon-btn" onClick={()=>setBmPanel(true)}
-            whileHover={{scale:1.08}} whileTap={{scale:0.95}} title="My Bookmarks"
-            style={{background:bookmarks.length>0?'rgba(176,160,216,0.16)':'var(--bg-card)',borderColor:bookmarks.length>0?'rgba(176,160,216,0.45)':'var(--border-soft)',position:'relative'}}>
-            🔖
-            {bookmarks.length>0&&(
-              <motion.span initial={{scale:0}} animate={{scale:1}}
-                style={{position:'absolute',top:'-5px',right:'-5px',width:'16px',height:'16px',borderRadius:'50%',background:'var(--lavender)',color:'white',fontSize:'9px',fontFamily:'var(--font-dm)',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:500}}>
-                {bookmarks.length}
-              </motion.span>
-            )}
-          </motion.button>
-          <motion.button className="nav-icon-btn" onClick={()=>setFeedbackOpen(true)}
-            whileHover={{scale:1.08}} whileTap={{scale:0.96}} title="Leave a private note"
-            style={{color:'var(--blue)',borderColor:'var(--border-blue)'}}>✉</motion.button>
-          <MusicToggle />
-          <BulbToggle />
-          <ViewToggle mode="book" onToggle={onSwitchToScroll} />
-        </div>
-      </header>
+  {/* Controls — only show essential ones on mobile */}
+  <div className="flex items-center gap-1.5 flex-shrink-0">
+    {/* Bookmarks — hidden on mobile */}
+    <motion.button
+      className="nav-icon-btn hidden sm:flex"
+      onClick={() => setBmPanel(true)}
+      whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}
+      style={{
+        background: bookmarks.length > 0 ? 'rgba(176,160,216,0.16)' : 'var(--bg-card)',
+        borderColor: bookmarks.length > 0 ? 'rgba(176,160,216,0.45)' : 'var(--border-soft)',
+        position: 'relative',
+      }}
+    >
+      🔖
+      {bookmarks.length > 0 && (
+        <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }}
+          style={{ position:'absolute',top:'-5px',right:'-5px',width:'16px',height:'16px',borderRadius:'50%',background:'var(--lavender)',color:'white',fontSize:'9px',fontFamily:'var(--font-dm)',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:500 }}>
+          {bookmarks.length}
+        </motion.span>
+      )}
+    </motion.button>
 
+    {/* Feedback — hidden on mobile */}
+    <motion.button
+      className="nav-icon-btn hidden sm:flex"
+      onClick={() => setFeedbackOpen(true)}
+      whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.96 }}
+      style={{ color: 'var(--blue)', borderColor: 'var(--border-blue)' }}
+    >✉</motion.button>
+
+    {/* Music — hidden on mobile */}
+    <div className="hidden sm:block">
+      <MusicToggle />
+    </div>
+
+    {/* Bulb toggle — always visible */}
+    <BulbToggle />
+
+    {/* View toggle — always visible */}
+    <ViewToggle mode="book" onToggle={onSwitchToScroll} />
+  </div>
+</header>
       {/* ── CHAPTER ── */}
       <main className="relative z-20" style={{height:'calc(100vh - 60px - 62px)',overflow:'hidden'}}>
         <AnimatePresence custom={dir} mode="wait">

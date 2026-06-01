@@ -50,28 +50,41 @@ export default function ScrollableView({ onSwitchToBook }: Props) {
       <LEDLights />
 
       {/* Sticky nav — no bookmark button in scroll mode */}
-      <header className="nav-header sticky top-0 z-30 flex items-center justify-between px-6 py-3">
-        <span className="nav-wordmark">Palak's Portfolio</span>
+      <header className="nav-header sticky top-0 z-30 flex items-center justify-between px-4 py-3 gap-2">
 
-        <nav className="flex gap-0.5 flex-wrap justify-center">
-          {CHAPTERS.map(ch => (
-            <button key={ch.id} onClick={() => scrollTo(ch.id)} className="nav-tab">
-              {ch.label}
-            </button>
-          ))}
-        </nav>
+  <span className="nav-wordmark hidden sm:block flex-shrink-0">
+    Palak's Portfolio
+  </span>
 
-        <div className="flex items-center gap-2">
-          {/* ── NO bookmark panel in scroll mode ── */}
-          <motion.button className="nav-icon-btn" onClick={() => setFeedbackOpen(true)}
-            whileHover={{ scale:1.08 }} whileTap={{ scale:0.96 }}
-            style={{ color:'var(--blue)', borderColor:'var(--border-blue)' }}
-            title="Leave a private note">✉</motion.button>
-          <MusicToggle />
-          <BulbToggle />
-          <ViewToggle mode="scroll" onToggle={onSwitchToBook} />
-        </div>
-      </header>
+  {/* Scrollable tabs on mobile */}
+  <nav className="flex gap-0.5 overflow-x-auto no-scrollbar" style={{ flex: 1 }}>
+    {CHAPTERS.map(ch => (
+      <button
+        key={ch.id}
+        onClick={() => scrollTo(ch.id)}
+        className="nav-tab flex-shrink-0"
+      >
+        {ch.label}
+      </button>
+    ))}
+  </nav>
+
+  <div className="flex items-center gap-1.5 flex-shrink-0">
+    <motion.button
+      className="nav-icon-btn hidden sm:flex"
+      onClick={() => setFeedbackOpen(true)}
+      whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.96 }}
+      style={{ color: 'var(--blue)', borderColor: 'var(--border-blue)' }}
+    >✉</motion.button>
+
+    <div className="hidden sm:block">
+      <MusicToggle />
+    </div>
+
+    <BulbToggle />
+    <ViewToggle mode="scroll" onToggle={onSwitchToBook} />
+  </div>
+</header>
 
       <main>
         {SECTIONS.map(({ id, Component }, i) => (

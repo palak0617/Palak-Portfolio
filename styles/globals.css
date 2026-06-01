@@ -385,3 +385,22 @@ html.dark .project-tag { color:#d0c8f8; background:rgba(176,160,216,0.2); }
     repeating-linear-gradient(90deg,transparent,transparent 9px,rgba(0,0,0,0.007) 9px,rgba(0,0,0,0.007) 10px);
 }
 *{scrollbar-width:thin;scrollbar-color:rgba(160,140,220,0.45) var(--ivory);}
+/* Hide scrollbar on nav tabs row */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Smaller nav tabs on mobile */
+@media (max-width: 640px) {
+  .nav-tab {
+    font-size: 10px;
+    padding: 5px 9px;
+    letter-spacing: 0.05em;
+  }
+  .nav-wordmark {
+    font-size: 14px;
+  }
+  .nav-page-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+}
