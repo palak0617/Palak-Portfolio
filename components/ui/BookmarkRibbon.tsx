@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useBookmarkContext } from './BookmarkContext';
+import { useBookmarks } from './BookmarkContext';
 import type { ChapterId } from '@/lib/data';
 
 interface BookmarkRibbonProps {
@@ -14,11 +14,11 @@ interface BookmarkRibbonProps {
  * Clicking it bookmarks / unbookmarks the chapter and shows a satisfying animation.
  */
 export default function BookmarkRibbon({ chapterId, chapterLabel }: BookmarkRibbonProps) {
-  const { isBookmarked, toggle } = useBookmarkContext();
+  const { isBookmarked, toggleBookmark  } =useBookmarks();
   const active = isBookmarked(chapterId);
 
   function handleClick() {
-    toggle(chapterId, chapterLabel);
+    toggleBookmark(chapterId);
   }
 
   return (
