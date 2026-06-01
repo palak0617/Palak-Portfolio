@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================
+   LIGHT MODE — FAIRY-TALE DREAMY PALETTE
+   ============================================= */
+:root {
+  /* Backgrounds */
+  --cream:       #f8f3ff;   /* lavender-tinted cream */
+  --ivory:       #f2eeff;
+  --parchment:   #ede8ff;
+  --paper:       #faf8ff;
+  --bg-page:     #faf8ff;
+  --bg-nav:      rgba(248,243,255,0.97);
+  --bg-card:     rgba(255,252,255,0.82);
+  --bg-footer:   rgba(248,243,255,0.98);
+  --body-gradient: linear-gradient(155deg,#eceaff 0%,#f5f0ff 28%,#faf3ff 52%,#f0f5ff 75%,#eef8f2 100%);
+
+  /* Fairy-tale colour tokens */
+  --sage:        #8aaa9a;
+  --sage-light:  #c8ddd2;
+  --blue:        #7898d4;
+  --blue-light:  #b0c4f0;
+  --blush:       #e8b0c0;
+  --lavender:    #b0a0d8;
+  --gold:        #c8a060;
+  --rose:        #d898b0;
+  --mint:        #8acca8;
+
+  /* Text */
+  --ink:         #2a2438;  /* deep purple-ink */
+  --ink-strong:  #1a1628;
+  --muted:       #6858a0;  /* muted violet */
+  --muted-light: rgba(104,88,160,0.55);
+
+  /* Borders */
+  --border-soft: rgba(160,140,220,0.22);
+  --border-blue: rgba(120,152,212,0.32);
+
+  /* Interactive */
+  --nav-active-bg:  rgba(120,152,212,0.14);
+  --nav-active-c:   #3a52a0;
+  --tab-c:          #4a3880;
+  --wordmark-c:     #6848a0;
+  --btn-c:          #5a4890;
+  --btn-bg:         rgba(255,252,255,0.75);
+
+  /* Letter/diary */
+  --diary-border:   rgba(176,160,216,0.55);
+  --diary-bg:       rgba(255,252,255,0.75);
+
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-dm:        'DM Sans', system-ui, sans-serif;
+  --font-dancing:   'Dancing Script', cursive;
+  --font-serif:     var(--font-cormorant);
+  --font-sans:      var(--font-dm);
+  --font-script:    var(--font-dancing);
+}
+
+/* =============================================
+   DARK MODE — MIDNIGHT FAIRY-TALE
+   ============================================= */
+html.dark {
+  --cream:       #0e0b18;
+  --ivory:       #130f20;
+  --parchment:   #1a1530;
+  --paper:       #110e1c;
+  --bg-page:     #110e1c;
+  --bg-nav:      rgba(14,11,24,0.97);
+  --bg-card:     rgba(28,22,48,0.88);
+  --bg-footer:   rgba(10,8,18,0.98);
+  --body-gradient: linear-gradient(155deg,#0a081a 0%,#0e0b1e 35%,#130f22 60%,#0a0e1a 100%);
+  --sage:        #88b09a;
+  --blue:        #8ab0e0;
+  --blue-light:  #6090c4;
+  --lavender:    #b0a0e0;
+  --ink:         #f0e8ff;
+  --ink-strong:  #ffffff;
+  --muted:       #c0a8e8;
+  --muted-light: rgba(192,168,232,0.65);
+  --border-soft: rgba(160,140,220,0.25);
+  --border-blue: rgba(138,176,224,0.3);
+  --bg-card:     rgba(28,22,50,0.88);
+  --nav-active-bg: rgba(138,176,224,0.18);
+  --nav-active-c:  #c0d8f8;
+  --tab-c:         #c8b8f0;
+  --wordmark-c:    #c0a8e8;
+  --btn-c:         #b0a0d8;
+  --btn-bg:        rgba(28,22,48,0.8);
+  --diary-border:  rgba(138,176,224,0.45);
+  --diary-bg:      rgba(28,22,50,0.78);
+}
+
+/* =============================================
+   BASE
+   ============================================= */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { -webkit-font-smoothing:antialiased; height:100%; transition:background 0.4s ease,color 0.4s ease; }
+body {
+  font-family: var(--font-dm);
+  background: var(--body-gradient);
+  color: var(--ink);
+  height: 100%;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+#__next, main { height: 100%; }
+::selection { background: rgba(176,160,216,0.3); color: var(--ink-strong); }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--ivory); }
+::-webkit-scrollbar-thumb { background: rgba(160,140,220,0.5); border-radius: 2px; }
+:focus-visible { outline: 2px solid rgba(120,152,212,0.55); outline-offset: 2px; border-radius: 4px; }
+
+/* =============================================
+   STORYBOOK ROOT
+   ============================================= */
+.storybook-root { background: var(--body-gradient); transition: background 0.4s ease; }
+
+/* =============================================
+   FAIRY-TALE BACKGROUND TEXTURE
+   ============================================= */
+.chapter-page-bg {
+  background-color: var(--bg-page);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  transition: background 0.4s ease;
+}
+
+/* Dreamy vignette overlay */
+.chapter-page-bg::after {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(160,140,220,0.1) 100%);
+  z-index: 1;
+}
+html.dark .chapter-page-bg::after {
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(10,8,24,0.5) 100%);
+}
+
+/* =============================================
+   NAV
+   ============================================= */
+.nav-header {
+  background: var(--bg-nav);
+  border-bottom: 0.5px solid var(--border-soft);
+  transition: background 0.4s ease, border-color 0.4s ease;
+  /* Dreamy frosted glass */
+  backdrop-filter: blur(16px);
+}
+.nav-footer {
+  background: var(--bg-footer);
+  border-top: 0.5px solid var(--border-soft);
+  transition: background 0.4s ease;
+  backdrop-filter: blur(16px);
+}
+.nav-wordmark {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--wordmark-c);
+  letter-spacing: 0.09em;
+  transition: color 0.4s ease;
+}
+.nav-tab {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: var(--font-dm);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease, background 0.4s ease, color 0.4s ease;
+  background: transparent;
+  color: var(--tab-c);
+  position: relative;
+}
+.nav-tab.active { background: var(--nav-active-bg); color: var(--nav-active-c); font-weight: 500; }
+.nav-tab:hover:not(.active) { background: rgba(160,140,220,0.12); }
+.nav-icon-btn {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  border: 0.5px solid var(--border-soft);
+  background: var(--bg-card);
+  cursor: pointer; backdrop-filter: blur(8px);
+  font-size: 17px;
+  transition: all 0.2s ease, background 0.4s ease;
+}
+.nav-icon-btn:hover { background: rgba(160,140,220,0.15); }
+.nav-page-btn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 22px;
+  border: 0.5px solid var(--border-soft);
+  background: var(--btn-bg);
+  font-family: var(--font-dm); font-size: 12px;
+  letter-spacing: 0.07em; color: var(--btn-c);
+  cursor: pointer; backdrop-filter: blur(6px);
+  transition: all 0.25s ease, background 0.4s ease, color 0.4s ease;
+}
+.nav-page-btn:hover { background: rgba(160,140,220,0.15); border-color: var(--border-blue); }
+
+/* =============================================
+   CHAPTER TYPOGRAPHY
+   ============================================= */
+.chapter-heading {
+  font-family: var(--font-cormorant);
+  font-weight: 300;
+  font-size: clamp(30px,5vw,44px);
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  transition: color 0.4s ease;
+}
+.chapter-heading em { font-style: italic; color: var(--lavender); }
+.chapter-rule {
+  width: 54px; height: 1.5px;
+  background: linear-gradient(to right, var(--lavender), transparent);
+  margin-bottom: 24px;
+}
+.chapter-label-vintage {
+  font-family: var(--font-cormorant); font-style: italic;
+  font-size: 13px; color: var(--lavender);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 6px; opacity: 0.85;
+}
+.chapter-intro-para {
+  font-family: var(--font-dm); font-size: 15px;
+  line-height: 1.9; color: var(--muted); font-weight: 300;
+  transition: color 0.4s ease;
+}
+
+/* =============================================
+   DIARY CARDS — dreamier
+   ============================================= */
+.diary-card {
+  background: var(--diary-bg);
+  border: 0.5px solid var(--border-soft);
+  border-left: 2.5px solid var(--diary-border);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px; margin-bottom: 14px;
+  backdrop-filter: blur(10px);
+  transition: background 0.4s ease, border-color 0.4s ease;
+  box-shadow: 0 4px 20px rgba(160,140,220,0.08);
+}
+.diary-date {
+  font-family: var(--font-dancing); font-size: 13px;
+  color: var(--lavender); margin-bottom: 8px; opacity: 0.9;
+  transition: color 0.4s ease;
+}
+.diary-body {
+  font-family: var(--font-dm); font-size: 15px;
+  line-height: 1.9; color: var(--muted); font-weight: 300;
+  transition: color 0.4s ease;
+}
+
+/* =============================================
+   SKILL PILLS — dreamy colours
+   ============================================= */
+.skill-pill {
+  padding: 8px 18px; font-size: 13px; letter-spacing: 0.04em;
+  border-radius: 30px; cursor: default;
+  transition: transform 0.2s ease, background 0.4s ease, color 0.4s ease;
+  font-weight: 500;
+}
+.skill-pill:hover { transform: translateY(-2px); }
+.sp-blue   { background:rgba(120,152,212,0.12); border:1px solid rgba(120,152,212,0.38); color:#2a3880; }
+.sp-sage   { background:rgba(138,170,154,0.12); border:1px solid rgba(138,170,154,0.38); color:#1a4832; }
+.sp-lav    { background:rgba(176,160,216,0.14); border:1px solid rgba(176,160,216,0.42); color:#3a2870; }
+.sp-blush  { background:rgba(232,176,192,0.12); border:1px solid rgba(232,176,192,0.42); color:#5e1a38; }
+html.dark .sp-blue  { color:#b0ccf8; background:rgba(120,152,212,0.18); }
+html.dark .sp-sage  { color:#a8d8b8; background:rgba(138,170,154,0.18); }
+html.dark .sp-lav   { color:#d0c8f8; background:rgba(176,160,216,0.18); }
+html.dark .sp-blush { color:#f0b8c8; background:rgba(232,176,192,0.18); }
+
+/* =============================================
+   PROJECT CARDS — dreamy glow
+   ============================================= */
+.project-card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border-soft);
+  border-radius: 16px; padding: 20px 18px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.4s ease;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(160,140,220,0.08);
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(160,140,220,0.2), 0 0 0 1px rgba(176,160,216,0.2);
+}
+.project-name { font-family:var(--font-cormorant); font-size:18px; color:var(--ink); margin-bottom:6px; transition:color 0.4s ease; }
+.project-desc { font-family:var(--font-dm); font-size:13px; line-height:1.75; color:var(--muted); font-weight:300; transition:color 0.4s ease; }
+.project-tag {
+  font-size:10px; padding:3px 9px; border-radius:20px;
+  background:rgba(176,160,216,0.14); border:0.5px solid rgba(176,160,216,0.35);
+  color:#3a2870; letter-spacing:0.07em; text-transform:uppercase;
+}
+html.dark .project-tag { color:#d0c8f8; background:rgba(176,160,216,0.2); }
+
+/* =============================================
+   LETTER / CONTACT — dreamy parchment
+   ============================================= */
+.letter-paper {
+  background: linear-gradient(150deg, var(--paper), var(--ivory) 60%, var(--parchment));
+  border: 0.5px solid var(--border-soft); border-radius: 16px;
+  position: relative; transition: background 0.4s ease;
+  box-shadow: 0 8px 32px rgba(160,140,220,0.12);
+}
+.letter-paper::before {
+  content:''; position:absolute; top:0; inset-x:0; height:2px;
+  border-radius:16px 16px 0 0;
+  background: linear-gradient(to right, transparent, var(--lavender), transparent);
+}
+.letter-greeting { font-family:var(--font-dancing); font-size:21px; color:var(--ink); position:relative; z-index:1; margin-bottom:16px; transition:color 0.4s ease; }
+.letter-body     { font-family:var(--font-dancing); font-size:16px; line-height:2; color:var(--muted); position:relative; z-index:1; transition:color 0.4s ease; }
+
+/* =============================================
+   TIMELINE
+   ============================================= */
+.tl-year  { font-family:var(--font-dancing); font-size:13px; color:var(--lavender); margin-bottom:3px; transition:color 0.4s ease; }
+.tl-title { font-family:var(--font-cormorant); font-size:17px; color:var(--ink); margin-bottom:4px; transition:color 0.4s ease; }
+.tl-desc  { font-family:var(--font-dm); font-size:14px; line-height:1.78; color:var(--muted); font-weight:300; transition:color 0.4s ease; }
+
+/* =============================================
+   FEEDBACK / BOOKMARK PANELS
+   ============================================= */
+.feedback-modal {
+  background: var(--bg-page);
+  border: 0.5px solid var(--border-soft);
+  transition: background 0.4s ease;
+  box-shadow: 0 24px 60px rgba(80,40,120,0.2);
+}
+.feedback-input {
+  background: var(--ivory); border: 0.5px solid var(--border-soft);
+  color: var(--ink); font-family: var(--font-dm);
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.2s ease;
+}
+.feedback-input:focus { border-color: var(--lavender); outline: none; }
+.bookmark-drawer {
+  background: linear-gradient(170deg, var(--paper), var(--ivory));
+  border-left: 0.5px solid var(--border-soft);
+  transition: background 0.4s ease;
+}
+.bookmark-item {
+  background: var(--bg-card); border: 0.5px solid var(--border-soft);
+  border-radius: 12px; transition: background 0.4s ease;
+}
+
+/* =============================================
+   ANIMATION KEYFRAMES
+   ============================================= */
+@keyframes burstOut {
+  0%   { opacity:0; transform:translate(-50%,-50%) scale(0.35); }
+  10%  { opacity:1; transform:translate(-50%,-50%) scale(1.05); }
+  100% { opacity:0; transform:translate(calc(-50% + var(--bx,120px)),calc(-50% + var(--by,-80px))) scale(0.65) rotate(var(--br,15deg)); }
+}
+@keyframes confettiFall {
+  0%   { opacity:1; transform:translate(var(--cx,0),var(--cy,0)) rotate(0deg); }
+  100% { opacity:0; transform:translate(calc(var(--cx,0) + var(--cdx,30px)),calc(var(--cy,0) + 290px)) rotate(var(--cr,360deg)); }
+}
+@keyframes butterflyFloat {
+  0%   { transform:translate(0,0) rotate(var(--rot,0deg)); }
+  25%  { transform:translate(var(--tx1,18px),var(--ty1,-14px)) rotate(calc(var(--rot,0deg)+5deg)); }
+  50%  { transform:translate(var(--tx2,30px),var(--ty2,-26px)) rotate(var(--rot,0deg)); }
+  75%  { transform:translate(var(--tx3,12px),var(--ty3,-12px)) rotate(calc(var(--rot,0deg)-4deg)); }
+  100% { transform:translate(0,0) rotate(var(--rot,0deg)); }
+}
+@keyframes wingbeat { from{transform:scaleX(1)} to{transform:scaleX(0.22) scaleY(0.88)} }
+@keyframes pageReveal { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+@keyframes bookFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes fireflyMoveV4 {
+  0%  {opacity:0;transform:translate(0,0)}
+  10% {opacity:0.9} 50%{opacity:0.5;transform:translate(var(--fx),var(--fy))}
+  90% {opacity:0.8} 100%{opacity:0;transform:translate(0,0)}
+}
+.page-reveal { animation:pageReveal 0.55s ease both; }
+.book-floating { animation:bookFloat 5.5s ease-in-out infinite; }
+.book-linen {
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 4px,rgba(0,0,0,0.015) 4px,rgba(0,0,0,0.015) 5px),
+    repeating-linear-gradient(90deg,transparent,transparent 9px,rgba(0,0,0,0.007) 9px,rgba(0,0,0,0.007) 10px);
+}
+*{scrollbar-width:thin;scrollbar-color:rgba(160,140,220,0.45) var(--ivory);}
