@@ -6,12 +6,16 @@ import ChapterLayout from '@/components/layout/ChapterLayout';
 
 /* ─── Edit these to add your own photos and captions ─── */
 const FRAMES = [
-  { src: '/images/achievements/achievement-1.jpg', caption: 'First Hackathon Win 🏆', year: '2022' },
-  { src: '/images/achievements/achievement-2.jpg', caption: 'Herbal Garden Launch 🌿', year: '2023' },
-  { src: '/images/achievements/achievement-3.jpg', caption: 'Technical Seminar Lead 🎤', year: '2023' },
-  { src: '/images/achievements/achievement-4.jpg', caption: 'Internship Milestone 🚀', year: '2024' },
-  { src: '/images/achievements/achievement-5.jpg', caption: 'Open Source Contribution 💻', year: '2024' },
-  { src: '/images/achievements/achievement-6.jpg', caption: 'Project Showcase Award ✦', year: '2024' },
+  { src: '/images/achievements/achievement-1.jpg', caption: 'Under 12 Chess Championship Win 🏆', year: '2018' },
+  { src: '/images/achievements/achievement-2.jpg', caption: 'Third Place, National Netball Championship', year: '2019' },
+  { src: '/images/achievements/achievement-3.jpg', caption: 'Student Organizer, National Science Day', year: '2024' },
+  { src: '/images/achievements/achievement-4.jpg', caption: 'Third Place, National Level Robotics Competition', year: '2024' },
+  { src: '/images/achievements/achievement-5.jpg', caption: 'Created and Launched a rocket at IIT Roorkee', year: '2024' },
+  { src: '/images/achievements/achievement-6.jpg', caption: 'Appointed as a member of the organising team in Ecolution Club', year: '2025' },
+  { src: '/images/achievements/achievement-7.jpg', caption: 'Celebrated World Plantation Day with Ecolution Club', year: '2025' },
+  { src: '/images/achievements/achievement-8.jpg', caption: 'Took part in Business and AI Immersion Program at Middlesex University, Dubai', year: '2025' },
+  { src: '/images/achievements/achievement-9.jpg', caption: 'IOT Group Project', year: '2025' },  
+  { src: '/images/achievements/achievement-10.jpg', caption: 'Secured TOP 5 in National Level Coding + Mathematics Competition, Codemathon 2k24', year: '2024' },
 ];
 /* ─────────────────────────────────────────────────────── */
 
