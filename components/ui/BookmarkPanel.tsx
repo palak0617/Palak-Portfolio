@@ -38,7 +38,8 @@ export default function BookmarkPanel({ isOpen, onClose, onNavigate }: BookmarkP
     <AnimatePresence>
       {isOpen && (
         <>
-          <motion.div className="fixed inset-0" style={{ zIndex:9998 }}
+          <motion.div
+            className="fixed inset-0"
             initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }}
             onClick={onClose}
             style={{ background:'rgba(20,16,10,0.45)', backdropFilter:'blur(4px)', zIndex:9998 }}
