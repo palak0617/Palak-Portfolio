@@ -405,16 +405,15 @@ html.dark .project-tag { color:#d0c8f8; background:rgba(176,160,216,0.2); }
   }
 }
 /* Custom pen cursor */
+/* Elegant fountain pen cursor */
 * {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M17.204 3.8a2.77 2.77 0 0 1 3.92 3.92L9.773 19.072l-4.806 1.04 1.04-4.805L17.203 3.8z' fill='%23b4a8d0' stroke='%236b5a9a' stroke-width='1.2'/%3E%3Ccircle cx='19' cy='5' r='1' fill='%23ffffff' opacity='0.8'/%3E%3C/svg%3E") 2 22, auto;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cg transform='translate(18,18) rotate(135) translate(-18,-18)'%3E%3C!-- Pen body --%3E%3Crect x='15' y='6' width='6' height='12' rx='1.5' fill='%23c0392b'/%3E%3C!-- Pen grip section --%3E%3Crect x='15' y='17' width='6' height='4' rx='0.5' fill='%23922b21'/%3E%3C!-- Nib --%3E%3Cpolygon points='15,21 21,21 18,30' fill='%23c0392b'/%3E%3C!-- Nib split line --%3E%3Cline x1='18' y1='22' x2='18' y2='29' stroke='%23641e16' stroke-width='0.6'/%3E%3C!-- Ink tip --%3E%3Ccircle cx='18' cy='30' r='0.8' fill='%23922b21'/%3E%3C!-- Cap top --%3E%3Crect x='14.5' y='3' width='7' height='4' rx='1.5' fill='%23922b21'/%3E%3C!-- Cap clip --%3E%3Crect x='20' y='2' width='1.5' height='10' rx='0.75' fill='%23641e16'/%3E%3C!-- Gold ring --%3E%3Crect x='15' y='16' width='6' height='1.5' rx='0.5' fill='%23f0c040'/%3E%3Crect x='15' y='18.5' width='6' height='1' rx='0.3' fill='%23f0c040'/%3E%3C!-- Body sheen --%3E%3Crect x='16' y='6.5' width='1.5' height='10' rx='0.75' fill='rgba(255,255,255,0.25)'/%3E%3C/g%3E%3C/svg%3E") 32 4, crosshair;
 }
 
-/* Pointer cursor for clickable elements */
 a, button, [role="button"], [tabindex] {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M17.204 3.8a2.77 2.77 0 0 1 3.92 3.92L9.773 19.072l-4.806 1.04 1.04-4.805L17.203 3.8z' fill='%23c8a0e0' stroke='%236b5a9a' stroke-width='1.2'/%3E%3Ccircle cx='19' cy='5' r='1' fill='%23ffffff' opacity='0.8'/%3E%3C/svg%3E") 2 22, pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cg transform='translate(18,18) rotate(135) translate(-18,-18)'%3E%3Crect x='15' y='6' width='6' height='12' rx='1.5' fill='%23e74c3c'/%3E%3Crect x='15' y='17' width='6' height='4' rx='0.5' fill='%23c0392b'/%3E%3Cpolygon points='15,21 21,21 18,30' fill='%23e74c3c'/%3E%3Cline x1='18' y1='22' x2='18' y2='29' stroke='%23922b21' stroke-width='0.6'/%3E%3Ccircle cx='18' cy='30' r='0.8' fill='%23c0392b'/%3E%3Crect x='14.5' y='3' width='7' height='4' rx='1.5' fill='%23c0392b'/%3E%3Crect x='20' y='2' width='1.5' height='10' rx='0.75' fill='%23922b21'/%3E%3Crect x='15' y='16' width='6' height='1.5' rx='0.5' fill='%23f0c040'/%3E%3Crect x='15' y='18.5' width='6' height='1' rx='0.3' fill='%23f0c040'/%3E%3Crect x='16' y='6.5' width='1.5' height='10' rx='0.75' fill='rgba(255,255,255,0.25)'/%3E%3C/g%3E%3C/svg%3E") 32 4, pointer;
 }
 
-/* Text cursor for input fields */
 input, textarea {
   cursor: text;
 }
